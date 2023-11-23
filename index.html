@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/menu.css">
+    <link rel="stylesheet" href="./css/modal.css">
+</head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: large;
+        }
+        #menu {
+            list-style-type: none;
+            background-color: black;
+
+        }
+        .menu-item {
+            display: inline-block;
+            color: white;
+            padding: 15px;
+        }
+        .search-forms{
+            color: white;
+            float: right;
+        }
+        .search-input{
+            padding: 5px 0;
+            margin: 10px 10px 0 0;
+        }
+        .active{
+            background-color: rgb(75, 164, 75);
+        }
+        main{
+            margin: 10px 0;
+        }
+        .content{
+            margin: 10px 0;
+        }
+        /* .menu-item:hover{
+            background-color: #f2f2f2;
+            color: black;
+        } */
+    </style>
+<body>
+    <ul id="menu">
+        <li class="menu-item active" onmouseover="hoverMenuItem(this)" onmouseout="outMenuItem(this)">trang chu</li>
+        <li class="menu-item" onmouseover="hoverMenuItem(this)" onmouseout="outMenuItem(this)">gioi thieu</li>
+        <li class="menu-item" onmouseover="hoverMenuItem(this)" onmouseout="outMenuItem(this)">bai viet</li>
+        <li class="menu-item" onmouseover="hoverMenuItem(this)" onmouseout="outMenuItem(this)">lien lac</li>
+        <span class="search-forms">
+            <input class="search-input" placeholder="tim kiem" type="text" name="search" id="search">
+        </span> 
+    </ul>
+ <main>
+      <h1>Ví dụ thao tác JavaScript với HTML, CSS</h1>
+      <p class="content">Nội dung đang cập nhật</p>
+      <button
+        id="loginBtn"
+        type="button"
+        onclick="document.getElementById('loginModal').style.display='block'"
+      >
+        Đăng nhập
+      </button>
+
+      <div id="loginModal" class="modal">
+        <form
+          class="modal-content animate"
+          action="/action_page.php"
+          method="post"
+        >
+          <div class="imgcontainer">
+            <span
+              onclick="document.getElementById('loginModal').style.display='none'"
+              class="close"
+              title="Close Modal"
+              >&times;</span
+            >
+            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR968Ni-A0DenPJRhZUYwdsc0uAzitUCnfBw5xREH6EiiBdgAE5O563OcjI" alt="Avatar" class="avatar" />
+          </div>
+
+          <div class="container">
+            <label for="uname"><b>Tài khoản</b></label>
+            <input
+              type="text"
+              placeholder="Nhập tài khoản"
+              name="uname"
+              required
+            />
+
+            <label for="psw"><b>Mật khẩu</b></label>
+            <input
+              type="password"
+              placeholder="Nhập mật khẩu"
+              name="psw"
+              required
+            />
+
+            <button onclick="login()">Đăng nhập</button>
+            <label>
+              <input type="checkbox" checked="checked" name="remember" />
+              Ghi nhớ tôi?
+            </label>
+          </div>
+
+          <div class="container" style="background-color: #f1f1f1">
+            <button
+              type="button"
+              onclick="document.getElementById('loginModal').style.display='none'"
+              class="cancelbtn"
+            >
+              Hủy
+            </button>
+            <span class="psw">Quên <a href="#">mật khẩu?</a></span>
+          </div>
+        </form>
+      </div>
+    </main>
+    <script>
+        function hoverMenuItem(currentTag) {
+            currentTag.style.backgroundColor = "#f2f2f2";
+            currentTag.style.color = "black";
+        }
+        function outMenuItem(currentTag) {
+            var activeClass = currentTag.classList[1];
+            if ( activeClass === "active") {
+                currentTag.style.backgroundColor = "#1fc61f";
+                currentTag.style.color = "white";
+            } else {
+                currentTag.style.backgroundColor = "black";
+                currentTag.style.color = "white";
+            }
+        }
+        function login() {
+            var username = document.getElementsByName("uname")[0].value;
+            var password = document.getElementsByName("psw")[0].value;
+            if ( username === "admin" && password === "123456") {
+                alert("dang nhap thanh cong!");
+                document.getElementById('loginModal').style.display='none';
+            } else {
+                alert("dang nhap that bai, vui long dang nhap lai!!!")
+            }
+        }
+    </script>
+</body>
+</html>
